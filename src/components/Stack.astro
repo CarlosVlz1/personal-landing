@@ -1,0 +1,193 @@
+---
+const technologies = [
+  {
+    category: "Backend",
+    skills: [
+      { name: "Node.js", level: 85 },
+      { name: "Java", level: 80 },
+      { name: "Spring Boot", level: 75 },
+      { name: "MongoDB", level: 70 },
+      { name: "API REST", level: 90 },
+      { name: "Oracle SQL", level: 85 },
+      { name: "JavaScript", level: 80 },
+      { name: "TypeScript", level: 75 },
+      { name: "NestJS", level: 70 },
+    ]
+  },
+  {
+    category: "Herramientas",
+    skills: [
+      { name: "Git", level: 90 },
+      { name: "GitHub", level: 90 },
+      { name: "Docker", level: 70 },
+      { name: "AWS", level: 65 },
+      { name: "Vercel", level: 85 },
+      { name: "Jira", level: 65 },
+      { name: "Slack", level: 55 },
+      { name: "ClickUp", level: 90 },
+    ]
+  }
+];
+---
+
+<section id="stack" class="stack">
+  <div class="container">
+    <h2 class="section-title">Mi Stack Tecnológico</h2>
+    <p class="section-subtitle">
+      Tecnologías y herramientas con las que trabajo día a día
+    </p>
+    
+    <div class="tech-grid">
+      {technologies.map((tech) => (
+        <div class="tech-category">
+          <h3 class="category-title">{tech.category}</h3>
+          <div class="skills-list">
+            {tech.skills.map((skill) => (
+              <div class="skill-item">
+                <div class="skill-header">
+                  <span class="skill-name">{skill.name}</span>
+                  <span class="skill-percentage">{skill.level}%</span>
+                </div>
+                <div class="skill-bar">
+                  <div 
+                    class="skill-progress" 
+                    style={`width: ${skill.level}%`}
+                  ></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .stack {
+    padding: 5rem 1rem;
+    background: var(--bg-darker);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    text-align: center;
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--gradient);
+    border-radius: 2px;
+  }
+
+  .section-subtitle {
+    text-align: center;
+    color: var(--text-gray);
+    font-size: 1.125rem;
+    margin-bottom: 3rem;
+  }
+
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .tech-category {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid rgba(99, 102, 241, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .tech-category:hover {
+    border-color: rgba(99, 102, 241, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .category-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  .skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .skill-item {
+    width: 100%;
+  }
+
+  .skill-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+  }
+
+  .skill-name {
+    font-weight: 600;
+    color: var(--text-light);
+  }
+
+  .skill-percentage {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+
+  .skill-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(148, 163, 184, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .skill-progress {
+    height: 100%;
+    background: var(--gradient);
+    border-radius: 4px;
+    transition: width 1s ease-out;
+    animation: fillBar 1.5s ease-out;
+  }
+
+  @keyframes fillBar {
+    from {
+      width: 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .stack {
+      padding: 3rem 1rem;
+    }
+
+    .tech-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+</style>
+
